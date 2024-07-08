@@ -1,0 +1,12 @@
+.header {
+    position: fixed;
+    top: 0;
+    background-color: #5ab3ee;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+}
+
+.header label {
+    font-size: 15px;
+}
