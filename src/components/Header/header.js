@@ -1,5 +1,7 @@
 import React from 'react'
 import './Header.css'
+import { FaSearch } from "react-icons/fa"; // Import your desired icon
+
 export default function Header() {
     return (
         <div>
@@ -7,16 +9,29 @@ export default function Header() {
                 <div className="header" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="header_nav">
-                            <a className="nav-link active" aria-current="page" href="#">HOME</a>
+                            <a className="nav-link" href="/">Home</a>
                         </li>
                         <li className="header_nav">
-                            <a className="nav-link" href="#">MENU</a>
+                            <a className="nav-link" href="#">About</a>
                         </li>
                         <li className="header_nav">
-                            <a className="nav-link active" aria-current="page" href="#">ABOUT</a>
+                            <a className="nav-link" href="#">On Tap</a>
                         </li>
                         <li className="header_nav">
-                            <a className="nav-link" href="#">CONTACT</a>
+                            <a className="nav-link" href="#">Wine & Spirits</a>
+                        </li>
+                        <li className="header_nav">
+                            <a className="nav-link" href="#">Non Alcoholic</a>
+                        </li>
+                        <li className="header_nav">
+                            <a className="nav-link" href="/menu">Food Menu</a>
+                        </li>
+                        <li className="header_nav">
+                            <a className="nav-link" href="#">Contact</a>
+                        </li>
+                        <li className="header_nav">
+                            <input className="header_search_button" type="search" placeholder="Search" aria-label="Search" />
+                            <button className="btn btn-info" type="submit"><FaSearch /></button>
                         </li>
                     </ul>
                 </div>

@@ -2,6 +2,6 @@ import React from 'react'
 
 export default function Menu() {
     return (
-        <div>Welcome to menu</div>
+        <h2>Welcome to menu</h2>
     )
 }

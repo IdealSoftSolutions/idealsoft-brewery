@@ -1,10 +1,15 @@
-.header {
+.nav_header {
     position: fixed;
     top: 0;
-    background-color: #5ab3ee;
+    background-color: #373c41;
     width: 100%;
     text-align: center;
     padding: 20px;
+}
+
+.bg-body-tertiary {
+    --bs-bg-opacity: 1;
+    background-color: #373c41 !important;
 }
 
 .header label {
@@ -12,5 +17,19 @@
 }
 
 .header_nav {
-    padding: 30px;
+    padding: 20px;
+}
+
+.nav-link {
+    color: #fff;
+}
+
+.header_nav_btton {
+    padding: 20px;
+}
+
+.header_search_button {
+    padding: .375rem .75rem;
+    border: var(--bs-border-width) solid var(--bs-border-color);
+    border-radius: var(--bs-border-radius);
 }
