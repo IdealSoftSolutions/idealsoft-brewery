@@ -5,13 +5,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 export default function Header() {
     const [selectedMenu, setSelectedMenu] = useState('');
 
-    function handleClick(e) {
+    const handleClick = (e) => {
         setSelectedMenu(e);
     };
 
 
     return (
-        <div className="navbar">
+        <div className="navbar-header">
             <div className="navbar-left">
                 <div className="navbar-links">
                     <a itemProp='url' role='tab' aria-controls='primarypanel2' aria-selected='true' className={selectedMenu === 'home' ? 'activeMenu' : ''} onClick={() => handleClick('home')} href="/home">Home</a>

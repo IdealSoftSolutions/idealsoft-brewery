@@ -1,46 +1,9 @@
 .catlist {
+    padding-top: 20%;
+    padding: 20px;
     display: inline-block;
     vertical-align: middle;
-    margin-bottom: 0px;
-    padding: 0px;
     text-align: center;
     overflow: scroll;
     white-space: nowrap;
-}
-
-.subclist {
-    width: 100%;
-    display: flex;
-    flex-basis: auto;
-    white-space: nowrap;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.it {
-    display: inline-block;
-    width: 280px !important;
-    margin: 5px !important;
-    text-align: left;
-}
-
-/* src/components/ImageComponent.css */
-.image-container {
-    display: block;
-    width: auto;
-    height: 0px;
-    padding-top: 100%;
-    border-radius: 0px;
-
-}
-
-.my-image {
-    width: 1px;
-    /* Set the width of the image */
-    height: 1px;
-    /* Maintain the aspect ratio */
-    border-radius: 10px;
-    /* Add rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    /* Add a subtle shadow */
 }
