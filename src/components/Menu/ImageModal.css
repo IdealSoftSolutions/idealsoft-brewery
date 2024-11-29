@@ -1,0 +1,66 @@
+/* src/components/ImageModal.css */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    background-color: rgba(0, 0, 0, 0.8);
+    transition: opacity 0.5s ease;
+}
+
+.modal.show {
+    display: block;
+    opacity: 1;
+}
+
+.modal.hide {
+    opacity: 0;
+}
+
+.modal-content {
+    position: relative;
+    margin: 10% auto;
+    padding: 20px;
+    width: 500px;
+    height: 450px;
+    max-width: 700px;
+    background-color: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    animation: slide-down 0.5s ease;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    background: none;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.close-icon {
+    color: #e90f0f;
+    font-weight: bolder;
+}
+
+.large-image {
+    width: 450px;
+    height: 300px;
+}
+
+@keyframes slide-down {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

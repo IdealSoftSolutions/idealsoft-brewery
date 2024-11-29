@@ -44,7 +44,7 @@
 }
 
 .menu-item:not(.selected) {
-    filter: blur(0.05em);
+    filter: blur(0.00em);
 }
 
 .item-label {
@@ -73,4 +73,41 @@
 
 .slide-button.right {
     right: 0;
+}
+
+.slected-menu-item {
+    padding-left: 40%;
+    padding-right: 40%;
+}
+
+.veg-label {
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.veg-icon {
+    width: 20px;
+    height: 20px;
+    border: 2px solid black;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
+}
+
+.inner-circle {
+    width: 10px;
+    height: 10px;
+    background-color: black;
+    border-radius: 50%;
+}
+
+.veg-text {
+    text-align: center;
+    font-weight: bolder;
+    font-size: larger;
+    color: black;
 }

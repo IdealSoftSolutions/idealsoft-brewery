@@ -1,22 +1,49 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 import chickentikka from '../Assets/chickentikka.jpg'
-import FoodCard from './FoodCard';
 import smokedBBQ from '../Assets/smokedBBQ.jpg'
 import tandoorichicken from '../Assets/tandoorichicken.jpg'
 import bbq from '../Assets/BBQ.jpg'
-import SlidingMenu from './SlidingMenu';
 import desserts from '../Assets/food/desserts.webp'
+import SlidingMenu from './SlidingMenu';
 import hookah from '../Assets/food/hookah.jpg'
 import drinks from '../Assets/food/drinks.jpg'
 import wine from '../Assets/food/wine.webp'
 import beer from '../Assets/food/beer.avif'
 import food from '../Assets/food/food.avif'
+import './FoodCard.css';
+import Submenu from './Submenu';
+import tiramisu from '../Assets/food/tiramisu.webp'
+import mojitos from '../Assets/food/mojito.jpg'
+import corona from '../Assets/food/corona.jpg'
+import whitewine from '../Assets/food/whitewine.webp'
+import cheescake from '../Assets/food/cheesecake.webp'
+import brownie from '../Assets/food/brownie.jpg'
+import custard from '../Assets/food/custard.png'
+import lemonade from '../Assets/food/lemonade.jpg'
+import margarita from '../Assets/food/margarita.jpg'
+import sparklingwine from '../Assets/food/SparklingWine.jpg'
+import tequilla from '../Assets/food/tequilla.jpg'
+import whiskey from '../Assets/food/whiskey.jpg'
+import rum from '../Assets/food/rum.webp'
+import bacardi from '../Assets/food/bacardi.jpg'
+import redwine from '../Assets/food/redwine.webp'
 
-export default function Menu() {
+
+export default function Menu(props) {
+    const [searchValue, setSearchValue] = useState('');
+    const [selectedMenuId, setSelectedMenuId] = useState(1);
+
+    const handleDataFromChild = (data) => {
+        setSelectedMenuId(data);
+    };
+
+    useEffect(() => {
+        setSearchValue(props.searchValue)
+    }, [props.searchValue]);
 
     const items = [
-        { id: 1, image: hookah, label: "Hookah" },
-        { id: 2, image: food, label: "Food" },
+        { id: 1, image: food, label: "Food" },
+        { id: 2, image: hookah, label: "Hookah" },
         { id: 3, image: desserts, label: "Desserts" },
         { id: 4, image: drinks, label: "Non Alcoholic" },
         { id: 5, image: beer, label: "On tap" },
@@ -60,19 +87,181 @@ export default function Menu() {
             isVegetarian: true
         }
     ];
+    const dessertsItems = [
+        {
+            image: tiramisu,
+            title: "Tiramisu",
+            description: "Crispy Tamilian cottage cheese fritters marinated with garlic, chilly, curry leaves and assorted spices.",
+            price: "495",
+
+        }, {
+            image: cheescake,
+            title: "Berry Cheescake",
+            description: "Crispy Tamilian cottage cheese fritters marinated with garlic, chilly, curry leaves and assorted spices.",
+            price: "495",
+
+        }, {
+            image: brownie,
+            title: "Sizzling Brownie",
+            description: "Crispy Tamilian cottage cheese fritters marinated with garlic, chilly, curry leaves and assorted spices.",
+            price: "495",
+
+        }, {
+            image: custard,
+            title: "Custard Pudding",
+            description: "Crispy Tamilian cottage cheese fritters marinated with garlic, chilly, curry leaves and assorted spices.",
+            price: "495",
+
+        }
+    ];
+
+    const hookahItems = [
+        {
+            image: hookah,
+            title: "Hookah",
+            description: "Crispy Tamilian cottage cheese fritters marinated with garlic, chilly, curry leaves and assorted spices.",
+            price: "495",
+            isVegetarian: false
+        },
+        {
+            image: hookah,
+            title: "Hookah",
+            description: "Crispy Tamilian cottage cheese fritters marinated with garlic, chilly, curry leaves and assorted spices.",
+            price: "495",
+            isVegetarian: false
+        }, {
+            image: hookah,
+            title: "Hookah",
+            description: "Crispy Tamilian cottage cheese fritters marinated with garlic, chilly, curry leaves and assorted spices.",
+            price: "495",
+            isVegetarian: false
+        }, {
+            image: hookah,
+            title: "Hookah",
+            description: "Crispy Tamilian cottage cheese fritters marinated with garlic, chilly, curry leaves and assorted spices.",
+            price: "495",
+            isVegetarian: false
+        }
+    ];
+
+    const nonAlcoholic = [
+        {
+            image: mojitos,
+            title: "mojitos",
+            description: "Crispy Tamilian cottage cheese fritters marinated with garlic, chilly, curry leaves and assorted spices.",
+            price: "495",
+
+        }, {
+            image: lemonade,
+            title: "Strawberry Lemonade",
+            description: "Crispy Tamilian cottage cheese fritters marinated with garlic, chilly, curry leaves and assorted spices.",
+            price: "495",
+
+        }, {
+            image: margarita,
+            title: "Margarita",
+            description: "Crispy Tamilian cottage cheese fritters marinated with garlic, chilly, curry leaves and assorted spices.",
+            price: "495",
+
+        }, {
+            image: tiramisu,
+            title: "tiramisu",
+            description: "Crispy Tamilian cottage cheese fritters marinated with garlic, chilly, curry leaves and assorted spices.",
+            price: "495",
+
+        }
+    ];
+
+    const onTap = [
+        {
+            image: corona,
+            title: "corona",
+            description: "Crispy Tamilian cottage cheese fritters marinated with garlic, chilly, curry leaves and assorted spices.",
+            price: "495",
+
+        }, {
+            image: tiramisu,
+            title: "tiramisu",
+            description: "Crispy Tamilian cottage cheese fritters marinated with garlic, chilly, curry leaves and assorted spices.",
+            price: "495",
+
+        }
+    ];
+
+    const wine_spirits = [
+        {
+            image: whitewine,
+            title: "White Wine",
+            description: "Crispy Tamilian cottage cheese fritters marinated with garlic, chilly, curry leaves and assorted spices.",
+            price: "495",
+
+        }, {
+            image: sparklingwine,
+            title: "Sparkling Wine",
+            description: "Crispy Tamilian cottage cheese fritters marinated with garlic, chilly, curry leaves and assorted spices.",
+            price: "495",
+
+        },
+        {
+            image: tequilla,
+            title: "Tequilla",
+            description: "Crispy Tamilian cottage cheese fritters marinated with garlic, chilly, curry leaves and assorted spices.",
+            price: "495",
+
+        }, {
+            image: whiskey,
+            title: "Whiskey",
+            description: "Crispy Tamilian cottage cheese fritters marinated with garlic, chilly, curry leaves and assorted spices.",
+            price: "495",
+
+        },
+        {
+            image: rum,
+            title: "Rum",
+            description: "Crispy Tamilian cottage cheese fritters marinated with garlic, chilly, curry leaves and assorted spices.",
+            price: "495",
+
+        }, {
+            image: bacardi,
+            title: "Bacardi",
+            description: "Crispy Tamilian cottage cheese fritters marinated with garlic, chilly, curry leaves and assorted spices.",
+            price: "495",
+
+        },
+        {
+            image: redwine,
+            title: "Red Wine",
+            description: "Crispy Tamilian cottage cheese fritters marinated with garlic, chilly, curry leaves and assorted spices.",
+            price: "495",
+
+        }
+    ];
+
+    let submenu;
+
+    if (selectedMenuId === 1)
+        submenu = foodItems
+    else if (selectedMenuId === 2)
+        submenu = hookahItems
+    else if (selectedMenuId === 3)
+        submenu = dessertsItems
+    else if (selectedMenuId === 4)
+        submenu = nonAlcoholic
+    else if (selectedMenuId === 5)
+        submenu = onTap
+    else if (selectedMenuId === 6)
+        submenu = wine_spirits
+    console.log("searchValue in menu=== " + searchValue)
+    submenu = submenu.filter(item =>
+        item.title.toLowerCase().includes(searchValue.toLowerCase())
+    )
 
 
     return (
         <div className="catlist">
             <div className="container">
-                <SlidingMenu items={items} />
-                <div className="row">
-                    {foodItems.map((item, index) => (
-                        <div key={index} className="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-4">
-                            <FoodCard {...item} />
-                        </div>
-                    ))}
-                </div>
+                <SlidingMenu items={items} onDataFromChild={handleDataFromChild} />
+                <Submenu submenuItems={submenu} />
             </div>
         </div>
 
