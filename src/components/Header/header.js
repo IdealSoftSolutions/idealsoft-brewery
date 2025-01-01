@@ -1,13 +1,35 @@
 import React, { useState } from 'react';
 import './Header.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Search from '../Search/SearchForHeader';
+import { BrowserRouter as Router, Route, Routes, Link, useNavigate } from 'react-router-dom';
 
-export default function Header() {
+export default function Header({ sendSearchValue }) {
     const [selectedMenu, setSelectedMenu] = useState('');
+    const [searchMeu, setSearchMeu] = useState(false);
+    const [searchvalue, setSearchValue] = useState('');
+
+    const navigate = useNavigate();
+
 
     const handleClick = (e) => {
         setSelectedMenu(e);
+        console.log('handleClick searchvalue ==> ' + searchvalue)
+        console.log('handleClick selectedMenu ==> ' + selectedMenu)
+
+        if (selectedMenu == 'search') {
+            navigate('/menu');
+            setSearchMeu(true)
+            sendSearchValue(searchvalue)
+        }
     };
+
+    const handleChange = (event) => {
+        setSearchValue(event.target.value)
+        navigate('/menu');
+        setSearchMeu(true)
+        sendSearchValue(searchvalue)
+    }
 
 
     return (
@@ -25,14 +47,12 @@ export default function Header() {
             <div className="navbar-right">
                 <div className="navbar-icons">
                     <div className="input-group rounded">
-                        <input type="search" className="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                        <button type="button" className="btn btn-link" onClick={() => alert('Search icon clicked')}>
-                            <i className="fas fa-search" style={{ fontSize: '24px', color: 'white' }}></i>
-                        </button>
+                        <input type="text" className="searchbox" onChange={handleChange} onClick={() => handleClick('search')} placeholder="Search..." aria-label="Search" aria-describedby="search-addon" />
                     </div>
 
                 </div>
             </div>
+            {/* {searchMeu & Search} */}
         </div>
     )
 }
