@@ -1,0 +1,9 @@
+.catlist {
+    padding-top: 20%;
+    padding: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    overflow: scroll;
+    white-space: nowrap;
+}
