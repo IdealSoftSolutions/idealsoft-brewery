@@ -22,7 +22,7 @@ export default function Header({ sendSearchValue }) {
             setSearchMeu(true)
             sendSearchValue(searchvalue)
         }
-    };
+    };~
 
     const handleChange = (event) => {
         setSearchValue(event.target.value)
