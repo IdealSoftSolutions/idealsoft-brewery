@@ -1,58 +1,116 @@
-import React, { useState } from 'react';
-import './Header.css'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Search from '../Search/SearchForHeader';
-import { BrowserRouter as Router, Route, Routes, Link, useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import "./Header.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { useNavigate } from "react-router-dom";
 
 export default function Header({ sendSearchValue }) {
-    const [selectedMenu, setSelectedMenu] = useState('');
-    const [searchMeu, setSearchMeu] = useState(false);
-    const [searchvalue, setSearchValue] = useState('');
+    const [selectedMenu, setSelectedMenu] = useState("");
+    const [searchValue, setSearchValue] = useState("");
 
     const navigate = useNavigate();
 
+    const handleClick = (menu) => {
+        setSelectedMenu(menu);
 
-    const handleClick = (e) => {
-        setSelectedMenu(e);
-        console.log('handleClick searchvalue ==> ' + searchvalue)
-        console.log('handleClick selectedMenu ==> ' + selectedMenu)
+        console.log("handleClick searchValue ==> ", searchValue);
+        console.log("handleClick selectedMenu ==> ", menu);
 
-        if (selectedMenu == 'search') {
-            navigate('/menu');
-            setSearchMeu(true)
-            sendSearchValue(searchvalue)
+        switch (menu) {
+            case "home":
+                navigate("/home");
+                break;
+
+            case "menu":
+                navigate("/menu");
+                break;
+
+            case "search":
+                navigate("/menu");
+                sendSearchValue(searchValue);
+                break;
+
+            default:
+                break;
         }
     };~
 
     const handleChange = (event) => {
-        setSearchValue(event.target.value)
-        navigate('/menu');
-        setSearchMeu(true)
-        sendSearchValue(searchvalue)
-    }
+        const value = event.target.value;
 
+        setSearchValue(value);
+        navigate("/menu");
+        sendSearchValue(value);
+    };
 
     return (
         <div className="navbar-header">
             <div className="navbar-left">
                 <div className="navbar-links">
-                    <a itemProp='url' role='tab' aria-controls='primarypanel2' aria-selected='true' className={selectedMenu === 'home' ? 'activeMenu' : ''} onClick={() => handleClick('home')} href="/home">Home</a>
-                    <a className={selectedMenu === 'about' ? 'activeMenu' : ''} onClick={() => handleClick('about')} href="#">About</a>
-                    <a className={selectedMenu === 'menu' ? 'activeMenu' : ''} onClick={() => handleClick('menu')} href="/menu">Menu</a>
-                    <a className={selectedMenu === 'on tap' ? 'activeMenu' : ''} onClick={() => handleClick('on tap')} href="#">On Tap</a>
-                    <a className={selectedMenu === 'wine & spirits' ? 'activeMenu' : ''} onClick={() => handleClick('wine & spirits')} href="#">Wine & Spirits</a>
-                    <a className={selectedMenu === 'non alcoholic' ? 'activeMenu' : ''} onClick={() => handleClick('non alcoholic')} href="#">Non Alcoholic</a>
+                    <a
+                        href="/home"
+                        className={selectedMenu === "home" ? "activeMenu" : ""}
+                        onClick={() => handleClick("home")}
+                    >
+                        Home
+                    </a>
+
+                    <a
+                        href="/about"
+                        className={selectedMenu === "about" ? "activeMenu" : ""}
+                        onClick={() => handleClick("about")}
+                    >
+                        About
+                    </a>
+
+                    <a
+                        href="/menu"
+                        className={selectedMenu === "menu" ? "activeMenu" : ""}
+                        onClick={() => handleClick("menu")}
+                    >
+                        Menu
+                    </a>
+
+                    <a
+                        href="/on-tap"
+                        className={selectedMenu === "on tap" ? "activeMenu" : ""}
+                        onClick={() => handleClick("on tap")}
+                    >
+                        On Tap
+                    </a>
+
+                    <a
+                        href="/wine-spirits"
+                        className={selectedMenu === "wine & spirits" ? "activeMenu" : ""}
+                        onClick={() => handleClick("wine & spirits")}
+                    >
+                        Wine & Spirits
+                    </a>
+
+                    <a
+                        href="/non-alcoholic"
+                        className={selectedMenu === "non alcoholic" ? "activeMenu" : ""}
+                        onClick={() => handleClick("non alcoholic")}
+                    >
+                        Non Alcoholic
+                    </a>
                 </div>
             </div>
+
             <div className="navbar-right">
                 <div className="navbar-icons">
                     <div className="input-group rounded">
-                        <input type="text" className="searchbox" onChange={handleChange} onClick={() => handleClick('search')} placeholder="Search..." aria-label="Search" aria-describedby="search-addon" />
+                        <input
+                            type="text"
+                            className="searchbox"
+                            value={searchValue}
+                            onChange={handleChange}
+                            onClick={() => handleClick("search")}
+                            placeholder="Search..."
+                            aria-label="Search"
+                        />
                     </div>
-
                 </div>
             </div>
-            {/* {searchMeu & Search} */}
         </div>
-    )
+    );
 }
