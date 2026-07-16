@@ -32,7 +32,7 @@ export default function Header({ sendSearchValue }) {
             default:
                 break;
         }
-    };~
+    };
 
     const handleChange = (event) => {
         const value = event.target.value;
