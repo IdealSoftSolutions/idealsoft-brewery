@@ -1,23 +1,23 @@
-import React, { useState } from 'react';
-import Submenu from '../Menu/Submenu';
-import './SearchForHeader.css';
-import chickentikka from '../Assets/chickentikka.jpg'
-
-
+import React from "react";
+import Submenu from "../Menu/Submenu";
+import "./SearchForHeader.css";
+import chickentikka from "../Assets/chickentikka.jpg";
 
 const Search = ({ searchQuery }) => {
-    const foodItemss = [
+    const foodItems = [
         {
             image: chickentikka,
             title: "Chicken Tikka",
-            description: "Crispy Tamilian cottage cheese fritters marinated with garlic, chilly, curry leaves and assorted spices.",
+            description:
+                "Crispy Tamilian cottage cheese fritters marinated with garlic, chilly, curry leaves and assorted spices.",
             price: "495",
-            isVegetarian: false
-        }
+            isVegetarian: false,
+        },
     ];
+
     return (
         <div className="Search">
-            <Submenu submenuItems={foodItemss} />
+            <Submenu submenuItems={foodItems} />
         </div>
     );
 };
