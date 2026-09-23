@@ -1,13 +1,1 @@
-.footer {
-    position: fixed;
-    bottom: 0;
-    background-color: #5ab3ee;
-    width: 100%;
-    text-align: right;
-    padding: 10px;
-}
-
-.footer label {
-    font-size: 15px;
-    padding: 0 30px;
-}
+.brand-footer .brand-mark{border-color:rgba(244,240,231,.65);color:var(--cream)}.brand-footer .brand-name span{color:#d8c695}
