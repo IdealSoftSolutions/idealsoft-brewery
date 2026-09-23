@@ -1,58 +1,27 @@
-import React, { useState } from 'react';
-import './Header.css'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Search from '../Search/SearchForHeader';
-import { BrowserRouter as Router, Route, Routes, Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
+import './Header.css';
 
-export default function Header({ sendSearchValue }) {
-    const [selectedMenu, setSelectedMenu] = useState('');
-    const [searchMeu, setSearchMeu] = useState(false);
-    const [searchvalue, setSearchValue] = useState('');
+const menuCategories = ['All', 'Kitchen', 'On tap', 'Drinks', 'Dessert'];
 
-    const navigate = useNavigate();
+export default function Header({ menuCategory, menuSearch, onMenuCategoryChange, onMenuSearchChange, onOpenMenu }) {
+  const [open, setOpen] = useState(false);
+  const location = useLocation();
+  const onMenuPage = location.pathname === '/menu';
+  const close = () => setOpen(false);
 
-
-    const handleClick = (e) => {
-        setSelectedMenu(e);
-        console.log('handleClick searchvalue ==> ' + searchvalue)
-        console.log('handleClick selectedMenu ==> ' + selectedMenu)
-
-        if (selectedMenu == 'search') {
-            navigate('/menu');
-            setSearchMeu(true)
-            sendSearchValue(searchvalue)
-        }
-    };
-
-    const handleChange = (event) => {
-        setSearchValue(event.target.value)
-        navigate('/menu');
-        setSearchMeu(true)
-        sendSearchValue(searchvalue)
-    }
-
-
-    return (
-        <div className="navbar-header">
-            <div className="navbar-left">
-                <div className="navbar-links">
-                    <a itemProp='url' role='tab' aria-controls='primarypanel2' aria-selected='true' className={selectedMenu === 'home' ? 'activeMenu' : ''} onClick={() => handleClick('home')} href="/home">Home</a>
-                    <a className={selectedMenu === 'about' ? 'activeMenu' : ''} onClick={() => handleClick('about')} href="#">About</a>
-                    <a className={selectedMenu === 'menu' ? 'activeMenu' : ''} onClick={() => handleClick('menu')} href="/menu">Menu</a>
-                    <a className={selectedMenu === 'on tap' ? 'activeMenu' : ''} onClick={() => handleClick('on tap')} href="#">On Tap</a>
-                    <a className={selectedMenu === 'wine & spirits' ? 'activeMenu' : ''} onClick={() => handleClick('wine & spirits')} href="#">Wine & Spirits</a>
-                    <a className={selectedMenu === 'non alcoholic' ? 'activeMenu' : ''} onClick={() => handleClick('non alcoholic')} href="#">Non Alcoholic</a>
-                </div>
-            </div>
-            <div className="navbar-right">
-                <div className="navbar-icons">
-                    <div className="input-group rounded">
-                        <input type="text" className="searchbox" onChange={handleChange} onClick={() => handleClick('search')} placeholder="Search..." aria-label="Search" aria-describedby="search-addon" />
-                    </div>
-
-                </div>
-            </div>
-            {/* {searchMeu & Search} */}
-        </div>
-    )
+  return <header className="site-header">
+    <div className="header-main">
+      <Link to="/" className="brand" onClick={close}><img className="brand-logo" src="/logo-oktober.svg" alt="OKTOBER — The Brewery" /></Link>
+      <button className="menu-toggle" type="button" aria-label={open ? 'Close navigation' : 'Open navigation'} aria-expanded={open} onClick={() => setOpen(!open)}><span /><span /></button>
+      <nav className={open ? 'main-nav is-open' : 'main-nav'} aria-label="Main navigation">
+        <NavLink to="/" end onClick={close}>Home</NavLink>
+        <NavLink to="/about" onClick={close}>Our story</NavLink>
+        <NavLink to="/menu" onClick={() => { onOpenMenu(); close(); }}>Menu</NavLink>
+        <NavLink to="/visit" onClick={close}>Visit</NavLink>
+        <Link className="nav-cta" to="/visit" onClick={close}>Find us <span aria-hidden="true">↗</span></Link>
+      </nav>
+    </div>
+    {onMenuPage && <div className="menu-toolbar"><nav className="menu-category-nav" aria-label="Menu categories">{menuCategories.map((category) => <button key={category} type="button" className={menuCategory === category ? 'menu-category-link is-active' : 'menu-category-link'} aria-pressed={menuCategory === category} onClick={() => onMenuCategoryChange(category)}>{category}</button>)}</nav><form className="menu-search" role="search" onSubmit={(event) => event.preventDefault()}><label className="visually-hidden" htmlFor="menu-search-input">Search menu</label><input id="menu-search-input" type="search" value={menuSearch} onChange={(event) => onMenuSearchChange(event.target.value)} placeholder="Search menu" /></form></div>}
+  </header>;
 }
