@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import chicken from '../Assets/chickentikka.jpg';
 import bbq from '../Assets/smokedBBQ.jpg';
 import tandoori from '../Assets/tandoorichicken.jpg';
@@ -10,7 +10,6 @@ import wine from '../Assets/food/wine.webp';
 import mojito from '../Assets/food/mojito.jpg';
 import lemonade from '../Assets/food/lemonade.jpg';
 
-const categories = ['All', 'Kitchen', 'On tap', 'Drinks', 'Dessert'];
 const items = [
   { name: 'Chicken Tikka', category: 'Kitchen', image: chicken },
   { name: 'Smoked BBQ', category: 'Kitchen', image: bbq },
@@ -24,8 +23,7 @@ const items = [
   { name: 'Sizzling brownie', category: 'Dessert', image: brownie },
 ];
 
-export default function Menu() {
-  const [active, setActive] = useState('All');
-  const visibleItems = useMemo(() => active === 'All' ? items : items.filter((item) => item.category === active), [active]);
-  return <main className="menu-page"><div className="menu-heading"><p className="eyebrow">SOMETHING FOR EVERY MOOD</p><h1>Good things<br /><em>to gather around.</em></h1><p>From the kitchen, the bar and the tap. Find a new favourite and make it a reason to stay.</p></div><div className="menu-controls" role="group" aria-label="Filter menu by category">{categories.map((category) => <button key={category} type="button" className={active === category ? 'filter-chip is-active' : 'filter-chip'} aria-pressed={active === category} onClick={() => setActive(category)}>{category}</button>)}</div><p className="menu-note">A selection of menu favourites. Items and availability may change.</p><div className="menu-grid">{visibleItems.map((item) => <article className="menu-card" key={item.name}><div className="menu-card-image"><img src={item.image} alt={item.name} loading="lazy" /></div><div className="menu-card-meta"><span>{item.category}</span><span aria-hidden="true">↗</span></div><h2>{item.name}</h2></article>)}</div></main>;
+export default function Menu({ activeCategory }) {
+  const visibleItems = useMemo(() => activeCategory === 'All' ? items : items.filter((item) => item.category === activeCategory), [activeCategory]);
+  return <main className="menu-page"><div className="menu-heading"><p className="eyebrow">SOMETHING FOR EVERY MOOD</p><h1>Good things<br /><em>to gather around.</em></h1><p>From the kitchen, the bar and the tap. Find a new favourite and make it a reason to stay.</p></div><p className="menu-note">A selection of menu favourites. Items and availability may change.</p><div className="menu-grid">{visibleItems.map((item) => <article className="menu-card" key={item.name}><div className="menu-card-image"><img src={item.image} alt={item.name} loading="lazy" /></div><div className="menu-card-meta"><span>{item.category}</span><span aria-hidden="true">↗</span></div><h2>{item.name}</h2></article>)}</div></main>;
 }

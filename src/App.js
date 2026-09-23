@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Header from './components/Header/header';
 import Footer from './components/Footer/footer';
@@ -14,7 +15,8 @@ function Visit() {
 }
 
 function App() {
-  return <BrowserRouter><div className="site-shell"><Header /><Routes><Route path="/" element={<Home />} /><Route path="/home" element={<Home />} /><Route path="/about" element={<About />} /><Route path="/menu" element={<Menu />} /><Route path="/visit" element={<Visit />} /><Route path="*" element={<Home />} /></Routes><Footer /></div></BrowserRouter>;
+  const [menuCategory, setMenuCategory] = useState('All');
+  return <BrowserRouter><div className="site-shell"><Header menuCategory={menuCategory} onMenuCategoryChange={setMenuCategory} /><Routes><Route path="/" element={<Home />} /><Route path="/home" element={<Home />} /><Route path="/about" element={<About />} /><Route path="/menu" element={<Menu activeCategory={menuCategory} />} /><Route path="/visit" element={<Visit />} /><Route path="*" element={<Home />} /></Routes><Footer /></div></BrowserRouter>;
 }
 
 export default App;
