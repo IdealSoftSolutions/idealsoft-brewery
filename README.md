@@ -1,4 +1,4 @@
-# IdealSoft Brewery website
+# OKTOBER Brewery website
 
 A responsive public website built with React and Create React App.
 
